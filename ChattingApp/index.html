@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" href="style.css">
+    <title>DevFaction</title>
+</head>
+<script src="/reload/reload.js"></script>
+<script src="socket.io/socket.io.js" defer></script>
+<script src="client.js" defer></script>
+<body>
+    <div id="main-page">
+        <form action="#">
+            <input id="main-room-id-box" type="text" placeholder="Enter room code">
+            <div class="buttons">
+                <button id="main-join-btn">Join</button>
+                <button id="create-room">Create new Room</button>
+            </div>
+        </form>
+    </div>
+
+
+    <div id="chat-room">
+        <!-- <button id="theme-btn">Toggle</button> -->
+        <header>
+            <div class="circle"></div>
+            <div class="name">
+                <div class="title">Personal Chat</div>
+                <div class="number-of"><span id="members"></span> Online</div>
+            </div>
+        </header>
+        
+        <div class="message-area"></div>
+
+        <div class="writting-area">
+            <form action="#" class="writeup">
+                <svg class="option-open" viewBox="0 0 50 50">
+                    <path d=""/>
+                </svg>
+            
+                <input type="text" id="msg-box" placeholder="Message...">
+                <button id="send-btn">
+                    <svg viewBox="0 0 50 50">
+                        <path d="M10,10 L40,25 M40,25 L10,40 M10,40 L15,25 M15,25 L10,10"/>
+                    </svg>
+                </button>
+
+                <button id="leave-room">Leave Room</button>
+            </form>
+
+            <div class="connect-rooms">
+                <form action="#">
+                    <input type="text" id="room-id-box" placeholder="Join Other Room">
+                    <button id="join-btn">Join</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

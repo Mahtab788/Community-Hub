@@ -1,0 +1,118 @@
+:root{
+    --primary-light-v2: #ecf7ffcc;
+    --dark-gray: #555;
+}
+
+.container1 {
+    display: none;
+}
+
+.notify-section{
+    width: 45vw;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+
+.notify-section .notify{
+    position: relative;
+    border-radius: 5px;
+    background: #fafaff;
+    box-shadow: 0px 0px 5px #0003;
+    padding: 0.6rem;
+    display: flex;
+    flex-direction: column;
+    /* gap: 0.5rem; */
+}
+
+.cover{
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    filter: blur(5px);
+    background-color: #fff;
+}
+.cover::after{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 200px;
+    transform: skewX(-30deg);
+    background: var(--primary-light-v2);
+    animation: scroll 5s ease infinite;
+}
+@keyframes scroll {
+    0%,40.05%,65.05%,100%{
+        transform: translateX(-150%) skewX(-20deg);
+    }
+    40%,65%{
+        transform: translateX(100vw) skewX(-20deg);
+    }
+}
+
+.new-notification,
+.prev-notification{
+    margin-top: 2rem;
+}
+.new-notification::before,
+.prev-notification::before{
+    content: 'New Notifications';
+    position: absolute;
+    padding: 0.2rem;
+    top: -1.5rem;
+    left: 0%;
+    height: 1rem;
+    width: 98%;
+    display: flex;
+    justify-content: center;
+    color: var(--light-gray);
+    background: var(--light-transparent);
+    border-bottom: 0.5px solid var(--light-gray);
+}
+.prev-notification::before{
+    content: 'Previous Notifications';
+}
+
+.notify-section .notify .sub-heading{
+    margin: 0;
+    width: 100%;
+    padding: 1rem;
+    color: var(--primary);
+    border-radius: 5px;
+    font-size: 1.1rem;
+    z-index: 2;
+
+}
+.notify-section .notify .message{
+    padding-top: 0.6rem;
+    padding-bottom: 0rem;
+    font-size: 1rem;
+    color: var(--dark-gray);
+    z-index: 2;
+}
+.notify-section .notify .date{
+    padding-top: 0.5rem;
+    font-size: 0.8rem;
+    color: var(--light-gray);
+    display: flex;
+    justify-content: flex-end;
+    z-index: 2;
+}
+
+
+
+
+
+
+
+@media only screen and (max-width: 650px){
+    .notify-section{
+        width: 100%;
+    }
+}

@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Three js documentation</title>
+</head>
+<script>
+    var list = [
+        {
+            topic:"Setting up THREE.js",
+            write:`<h1>Setting up your THREE.js</h1> <p>There are 3 ways to load Three.js:-</p> <li>Load it from cdn.js : <a href="https://cdnjs.com/libraries/three.js">Go to cdn js</a></li> <li>Download it from THREE.js official website : <a href="https://threejs.org">Download</a></li> <li>Through node and blunder webpack : <a href="https://drive.google.com/file/d/1_Xb8AuRxQKdeG1qng0kRGcVGtspOBtaG/view?usp=sharing">Download Zip file</a></li>`,
+            img: 'three',
+            code: 'code'
+        }
+        // {topic:"Basic of Scene, Camera, Renderer"},
+        // {topic:"Basic Geometries"},
+        // {topic:"Different Materials"},
+        // {topic:"Creating Meshes"},
+        // {topic:"Generate random triangles"},
+        // {topic:"3D Text"},
+        // {topic:"Types of Lightings"},
+        // {topic:"Use of Shadows"},
+        // {topic:"Haunted House"},
+        // {topic:"Particles in THREE.js"},
+        // {topic:"Galaxy Generator"},
+        // {topic:"RayCaster in THREE.js"},
+        // {topic:"Physics through CANNON.js"}
+    ];
+    var documentation = {
+        lists: [
+            {
+                topic:"Setting up THREE.js",
+                write:`<h1>Setting up your THREE.js</h1> <p>There are 3 ways to load Three.js:-</p> <li>Load it from cdn.js : <a href="https://cdnjs.com/libraries/three.js">Go to cdn js</a></li> <li>Download it from THREE.js official website : <a href="https://threejs.org">Download</a></li> <li>Through node and blunder webpack : <a href="https://drive.google.com/file/d/1_Xb8AuRxQKdeG1qng0kRGcVGtspOBtaG/view?usp=sharing">Download Zip file</a></li>`
+            }
+        ],
+
+        images: [
+            {
+                img: 'https://firebasestorage.googleapis.com/v0/b/cool-works.appspot.com/o/images%2Fthree.png?alt=media&token=1c386ab4-e880-4f5e-98da-995a3de56917'
+            }
+        ],
+
+        codes: [
+            {
+                code: 'https://firebasestorage.googleapis.com/v0/b/cool-works.appspot.com/o/code%2FsetUp.js?alt=media&token=51fde103-a6f1-4617-9795-9902519a1c44'
+            }
+        ]
+    }
+
+</script>
+<body>
+    <!-- retrieve data from firebase -->
+    <!-- <input type="text" placeholder="search" class="find"><br>
+    username:<div id="rname"></div><br>
+    usergender:<div id="rgender"></div><br>
+    userage:<div id="rage"></div><br>
+
+    send data to firebase -->
+    <!-- <input type="text" placeholder="name" id="nm">
+    <input type="number" placeholder="age" id="age">
+    <input type="text" placeholder="gender" id="gender"> -->
+    <button id="btn">GO</button>
+
+    <input type="file" id="sendFile">
+    <button id="send">send</button>
+
+
+
+
+
+
+
+
+
+
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase.js"></script>
+
+    
+
+    <script>
+        var firebaseConfig = {
+        apiKey: "AIzaSyDWtgzeBsmQWMOCVxos21UuTSYR3oSYNMo",
+        authDomain: "cool-works.firebaseapp.com",
+        databaseURL: "https://cool-works-default-rtdb.firebaseio.com",
+        projectId: "cool-works",
+        storageBucket: "cool-works.appspot.com",
+        messagingSenderId: "818427341464",
+        appId: "1:818427341464:web:2af9a782cab5b008f6feed",
+        measurementId: "G-SPRW140RJC"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+
+        // send data to firebase
+        // var nm = document.querySelector('#nm');
+        // var age = document.querySelector('#age');
+        // var gender = document.querySelector('#gender');
+        // var btn = document.querySelector('#btn');
+
+        btn.onclick = function(){
+            firebase.database().ref().set({
+                // username: nm.value,
+                // userage: age.value,
+                // usergender: gender.value
+                documentation: documentation
+            })
+        }
+
+
+        // retrieve data from firebase
+        // var rfind = document.querySelector('.find');
+        // var rnm = document.querySelector('#rname');
+        // var rgender = document.querySelector('#rgender');
+        // var rage = document.querySelector('#rage');
+
+
+        // rfind.onkeyup = function(){
+        //     firebase.database().ref('user/'+rfind.value).once('value').then(function (snap){
+            
+        //     if (snap.val()) {
+        //         rnm.innerHTML = snap.val().username;
+        //         rgender.innerHTML = snap.val().usergender;
+        //         rage.innerHTML = snap.val().userage;
+        //     } else {
+        //         return;
+        //     }
+            
+        // })
+        // }
+
+        var sendFile = document.querySelector('#sendFile');
+        var send = document.querySelector('#send');
+        
+        
+        send.onclick = function(){
+            var codeFile = sendFile.files[0];
+            var metadataCode = {
+                contentType: codeFile.type
+            }
+            firebase.storage().ref('code/').child(codeFile.name).put(codeFile,metadataCode)
+            .then(snap => snap.ref.getDownloadURL())
+            .then(url => {
+                // codeData = url;
+                // firebase.database().ref('documentation/codes/'+pseudoLen).set({
+                //     code: codeData
+                // })
+                console.log(url);
+            })
+        }
+
+
+
+
+    </script>
+
+
+    <!-- <script src="script.js"></script> -->
+</body>
+</html>

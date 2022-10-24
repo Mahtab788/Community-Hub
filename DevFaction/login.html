@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
+    <title></title> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Langar&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase.js"></script>
+    <script src="script.js" defer></script>
+
+    <div class="login">
+        <form class="form">
+            <h1 id='status'>Log-In</h1>
+            <div class="UN">
+                <input type="text" id="username" autocomplete="off" required>
+                <span class="unspan">Username</span>
+            </div>
+            <div class="UP">
+                <input type="password" id="userpassword" autocomplete="off" required>
+                <span class="upspan">Password</span>
+            </div>
+            <div class="loginbutton">Login</div>
+            <div><p>Haven't registered yet! <a href="./register.html">Click here to Register</a></p></div>
+            
+        </form>
+        
+    </div>
+
+    <div class="loader">
+        <svg viewBox ="0 0 10 15">
+            <path d="M2,2 L8,2 L5,5 A 4 4 1 1 1 2 12"/>
+        </svg>
+    </div>
+
+
+    <div class="afterLogin">
+    
+    <header>
+        <a class="devlogo" href="./index.html"><h1>DevFaction</h1></a>
+        <div class="combine">
+            <div class="search">
+                <input type="text" placeholder="Search...">
+            </div>
+            <div class="add">
+                <div class="line">
+                    <div class="line1"></div>
+                    <div class="line2"></div>
+                </div>
+                NEW
+            </div>
+        </div>
+
+        <input type="text" placeholder="Search" class="searchHide">
+        <div class="menu">
+            <div class="top-left"></div>
+            <div class="top-right"></div>
+            <div class="bottom-left"></div>
+            <div class="bottom-right"></div>
+        </div>
+    </header>
+
+    <div class="container">
+
+        <div class="content">
+            <!-- <svg id="arrow" viewBox="0 0 60 100">
+                <path d="M10,10 L50,50 L10,90" />
+            </svg> -->
+
+            <div class="box">
+                <div class="bg"></div>
+                <div class="img"></div>
+            </div>
+
+            <div class="topic"></div>
+
+            
+        </div>
+        <div class="helper">
+            <div class="intro">
+                <p>Welcome to DevFaction, The complete developer platform to build, scale, and deliver secure Blogs. </p>
+                <p>This is where you can share and view the view points.The future of code is in the cloud, not your local copy. Codespaces gives you a complete, configurable dev environment on top of a powerful VM in minutes.</p> 
+                <p>To Chat <a href="http://localhost:3000/">Click Here!</a>
+            </div>
+            <div class="btm">
+                <div class="sec">
+                    <div class="Download">Download</div>
+                    <!-- <div class="Download" id="discu">Comments</div> -->
+
+                    <div class="logout">
+                        <svg viewBox = "0 0 20 20">
+                            <path d="M8,4 A6,6 0 1 0 12,4 M10,2 L10,8"/>
+                        </svg>
+                    </div>
+                </div>
+
+                <div class="plus">
+                    <div class="one"></div>
+                    <div class="two"></div>
+                </div>
+            </div>
+
+            <div class="searchList">
+                <!-- Search list goes here  -->
+            </div>
+        </div>
+
+    </div>
+
+    <div class="addNewTopic">
+        <div id="tname">
+            <h3>Name:</h3>
+            <input type="text" id="sendTopic" autocomplete="off">
+        </div>
+
+        <div class="filesArea">
+            <div id="timage">
+                <label for="sendImage">Choose Image</label>
+                <input type="file" id="sendImage" accept="image/*">
+            </div>
+    
+            <div id="tfile">
+                <label for="sendFile">Choose File</label>
+                <input type="file" id="sendFile" accept=".js, .html">
+            </div>
+        </div>
+        
+        <div id="twrite">
+            <h3>Write up:</h3>
+            <textarea id="sendWrite"></textarea>
+        </div>
+
+
+        <div class="btn">
+            <button id="create">Add new</button>
+            <button id="cancel">Cancel</button>
+        </div>
+
+    </div>
+
+    </div>
+<a class= "anchor" download style= 'display:none'></a>
+<script id="dsq-count-scr" src="//localhost-ewds5wi8bo.disqus.com/count.js" async></script>
+
+</body>
+</html>

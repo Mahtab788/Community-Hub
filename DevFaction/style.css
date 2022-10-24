@@ -1,0 +1,687 @@
+:root{
+    --dropShadow: #8536EB33;
+    --bgColor: #efefef;
+    --mainNav: #fff;
+    --main: #8536EB;
+    --light: #d9d0e4;
+    --dark: #5a25a0;
+    --red: #1f1829;
+}
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins',sans-serif;
+    cursor: default;
+}
+body{
+    background: var(--bgColor);
+    /* overflow-x: hidden; */
+    overflow-x: hidden;
+}
+::-webkit-scrollbar{
+    width: 10px;
+}
+::-webkit-scrollbar-track{
+    background: transparent;
+}
+::-webkit-scrollbar-thumb{
+    background: var(--main);
+    border-radius: 0px;
+    transition: all .3s ease-in-out;
+    box-sizing: border-box;
+}
+::-webkit-scrollbar-thumb:hover{
+    background: #9c5df0;
+}
+.loader{
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: var(--bgColor);
+    z-index: 100;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all .3s ease;
+}
+.loader svg{
+    width: 90%;
+    max-width: 300px;
+    aspect-ratio: 1/1.5;
+    /* border: 1px solid #0005; */
+}
+.loader svg path{
+    stroke: var(--light);
+    stroke-width: 1;
+    fill: none;
+    stroke-linecap: round;
+    stroke-dasharray: 25.299055099487305;
+    stroke-dashoffset: 25.299055099487305;
+    animation: move 2s infinite;
+}
+@keyframes move {
+    0%{
+        stroke-dashoffset: 25.299055099487305;
+    }
+    50%{
+        stroke-dashoffset: 0;
+    }
+    100%{
+        stroke-dashoffset: -25.299055099487305;
+    }
+}
+
+.login{
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 110;
+    background: linear-gradient(45deg,var(--main),#7136eb,#4511ad);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login p{
+    margin-top: 10px; 
+    padding: 20px;
+}
+.login .form{
+    width: 70%;
+    max-width: 400px;
+    aspect-ratio: 1/1.5;
+    background: var(--mainNav);
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0px 10px 10px #0005;
+}
+.login .form .UN,.login .form .UP{
+    position: relative;
+}
+.login .form .UN #username,.login .form .UP #userpassword{
+
+    outline: none;
+    border:none;
+    background: transparent;
+    font-size: clamp(15px,3vw,17px);
+    color: #2a2a2a;
+    padding: 5px;
+    margin: 20px;
+    border-bottom: 1px solid var(--main);
+}
+
+.login .form .UN span,.login .form .UP span{
+    position: absolute;
+    font-size: clamp(15px,3vw,17px);
+    top: 25px;
+    left: 25px;
+    color: var(--dark);
+    transition: all .3s ease;
+    pointer-events: none;
+}
+
+.login .form .UN #username:focus ~ .unspan,
+.login .form .UN #username:valid ~ .unspan{
+    font-size: 12px;
+    top: 5px;
+    left: 25px;
+}
+
+.login .form .UP #userpassword:focus ~ .upspan,
+.login .form .UP #userpassword:valid ~ .upspan{
+    font-size: 12px;
+    top: 5px;
+    left: 25px;
+}
+.login .form .loginbutton{
+    padding: 10px 30px;
+    margin: 20px;
+    border-radius: 12px;
+    background: #7136eb;
+    color: var(--mainNav);
+}
+
+
+header{
+    position: sticky;
+    top: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--mainNav);
+    box-shadow: 0px 4px 4px var(--dropShadow);
+    min-height: 50px;
+    overflow: hidden;
+    z-index: 10;
+}
+header h1{
+    font-size: 17px;
+    color: var(--main);
+    padding: 10px 0px;
+    margin: 0px 3.5vw;
+    cursor: pointer;
+}
+
+header .combine{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-right: 3.5vw;
+    /* padding: 10px; */
+}
+header .combine .search{
+    position: relative;
+    margin-right: 20px;
+    border-radius: 10px;
+    overflow: hidden;
+    transition: all .3s ease;
+}
+header .combine .search input{
+    outline: none;
+    border: none;
+    font-size: 15px;
+    color: var(--main);
+    padding: 9px 15px;
+    cursor: pointer;
+    background: var(--light);
+    transition: all .3s ease;
+}
+header .combine .search input::placeholder{
+    color: #555;
+    opacity: 1;
+    transition: all .3s ease;
+}
+header .combine .search:hover input::placeholder{
+    color: var(--main);
+}
+header .combine .search::before{
+    content: '';
+    position: absolute;
+    top: 94%;
+    left: 50%;
+    transform: translate(-50%,-94%);
+    height: 6%;
+    width: 0%;
+    background: var(--main);
+    transition: all .3s ease;
+    transform-origin: center;
+}
+header .combine .search:hover {
+    border-radius: 0px;
+}
+header .combine .search:hover input{
+    background: var(--mainNav);
+    /* padding: 9px 9px; */
+}
+header .combine .search:hover::before{
+    width: 100%;
+}
+header .combine .add{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--main);
+    padding: 10px;
+    cursor: pointer;
+    font-weight: 600;
+}
+header .combine .add .line{
+    position: relative;
+    height: 20px;
+    width: 20px;
+    margin: 0px 10px;
+    cursor: pointer;
+}
+header .combine .add .line .line1{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    height: 100%;
+    width: 10%;
+    background: var(--main);
+}
+header .combine .add .line .line2{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    height: 10%;
+    width: 100%;
+    background: var(--main);
+}
+header .searchHide{
+    font-size: 15px;
+    border: none;
+    outline: none;
+    padding: 8px 10px;
+    border-bottom: 1px solid var(--main);
+    width: 45vw;
+    background: transparent;
+    transform: translateY(100px);
+    transition: all .3s ease;
+    color: var(--dark);
+    display: none;
+}
+header .searchHide::placeholder{
+    color: var(--main);
+}
+header .menu{
+    position: relative;
+    margin: 0px 3.5vw;
+    height: 25px;
+    width: 25px;
+    display: none;
+}
+header .menu .top-left,
+header .menu .top-right,
+header .menu .bottom-left,
+header .menu .bottom-right{
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 2.5px;
+    width: 2.5px;
+    background: var(--dark);
+    transition: all .3s ease;
+    transform: rotate(45deg);
+    transform-origin: 1.25px 1.25px;
+}
+header .menu .top-right{
+    top: 0;
+    left: calc(100% - 2px);
+    transform: rotate(135deg);
+}
+header .menu .bottom-left{
+    top: calc(100% - 2px);
+    left: 0;
+    transform: rotate(-45deg);
+}
+header .menu .bottom-right{
+    top: calc(100% - 2px);
+    left: calc(100% - 2px);
+    transform: rotate(-135deg);
+}
+
+
+
+.container{
+    min-height: calc(100vh - 50px);
+    width: 100vw;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr;
+    grid-template-areas: "content content content helper helper";
+}
+
+.container .content{
+    position: relative;
+    grid-area: content;
+    background: var(--bgColor);
+}
+.container .helper{
+    position: relative;
+    grid-area: helper;
+    left: 0%;
+    background: var(--light);
+}
+
+/* .container .content svg#arrow{
+    position: sticky;
+    top: calc(100vh - 100px);
+    left: 100%;
+    width: 10%;
+    max-width: 70px;
+    aspect-ratio: 1/1;
+}
+.container .content svg#arrow path{
+    stroke-linecap: round;
+    stroke-width: 7;
+    fill: none;
+    stroke: var(--main);
+    cursor: pointer;
+} */
+
+.container .content .box{
+    position: relative;
+    margin: 40px 20px 20px 3.5vw;
+    width: 90%;
+    max-width: 600px;
+    aspect-ratio: 16/9;
+    /* border: 1px solid #000; */
+}
+.container .content .box .bg{
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 60%;
+    aspect-ratio: 16/9;
+    background: linear-gradient(45deg,var(--main),#7136eb,#4511ad);
+    border-radius: 10px;
+    /* border: 2px solid var(--main); */
+}
+.container .content .box .img{
+    position: absolute;
+    left: 30px;
+    width: 90%;
+    aspect-ratio: 16/9;
+    background-image: #fff !important;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px #0005;
+}
+.container .content .topic{
+    margin: 70px 10px 10px 3.5vw;
+    height: auto;
+}
+.container .content .topic h1{
+    font-weight: bold;
+    font-size: clamp(22px,3vw,40px);
+    color: #69626C;
+    filter: opacity(0.9);
+    margin: 10px 0 20px 0px;
+}
+.container .content .topic .page{
+    height: 100vh;
+    background: #555;
+}
+.container .content .topic li{
+    margin: 0;
+    margin: 20px 0px 10px 0px;
+    color: #6d6a6a;
+    font-size: clamp(15px,3vw,17px);
+    list-style: decimal;
+}
+.container .content .topic p{
+    margin: 10px 3.5vw 0px 0px;
+    color: #6d6a6a;
+    font-size: clamp(14px,2.8vw,16px);
+    word-wrap: break-word;
+}
+
+.container .content .topic li a{
+    text-decoration: none;
+    cursor: pointer;
+    color: var(--dark);
+    margin-top: 5px;
+    font-size: clamp(15px,3vw,17px);
+}
+.container .content .topic pre{
+    background: var(--light);
+    margin: 20px 3.5vw 20px 0;
+    color: var(--main);
+    font-size: clamp(15px,3vw,17px);
+    padding: 10px;
+    max-width: calc(100vw - 60px);
+    /* word-wrap: break-word; */
+    overflow-x: scroll;
+    border-radius: 5px;
+}
+.container .content .topic pre::-webkit-scrollbar {
+    height: 6px;
+}
+.container .content .topic pre::-webkit-scrollbar-thumb {
+    background: var(--main);
+    border-radius: 10px;
+    height: 4px;
+    transition: all .3s ease-in-out;
+    box-sizing: border-box;
+}
+.btm {
+    position: absolute;
+    bottom: 0;
+    left: 0px;
+    width: 100%;
+    background:linear-gradient(45deg,var(--main),#7136eb,#4511ad);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.btm .sec{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.btm .sec .code{
+    padding: 5px 10px;
+    font-size: 15px;
+    margin: 10px;
+    color: var(--mainNav);
+}
+.btm .sec .logout{
+    position: relative;
+    height: 40px;
+    width: 40px;
+    margin-left: 10px;
+}
+.btm .sec .logout svg{
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    border-radius: 50%;
+}
+.btm .sec .logout svg path{
+    stroke-width: 1;
+    stroke: var(--mainNav);
+    fill: none;
+}
+.btm .sec .Download {
+    margin-left: 10px;
+    margin-right: 10px;
+    color: white;
+    font-size: large;
+    }
+
+.btm .plus{
+    position: relative;
+    height: 40px;
+    width: 40px;
+    margin-right: 10px;
+}
+.btm .plus .one{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    height: 70%;
+    width: 5%;
+    background: var(--mainNav);
+}
+.btm .plus .two{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    height: 5%;
+    width: 70%;
+    background: var(--mainNav);
+}
+
+.container .helper .intro{
+    position: sticky;
+    top: 100px;
+    margin-top: 30px;
+    height: auto;
+}
+.container .helper .intro p{
+    margin: 50px 20px;
+    color: var(--main);
+    letter-spacing: 1.5px;
+    word-spacing: 5px;
+    /* font-size: clamp(15px,2.3vw,20px); */
+}
+
+
+/* styles for Search list */
+.searchList{
+    position: absolute;
+    top: 0px;
+    left: 100%;
+    height: 100%;
+    width: 100%;
+    background: #e2e2e2;
+    transition: all .3s ease;
+    border-left: 0.5px solid var(--light);
+}
+.searchList li{
+    padding: 10px 15px;
+    margin: 5px 0;
+    font-size: clamp(13px,2.7vw,15px);
+    color: var(--main);
+    list-style: none;
+    background: #eee;
+    letter-spacing: 1.25px;
+    word-spacing: 5px;
+}
+
+
+/* styles for addNew Topic */
+.addNewTopic{
+    position: fixed;
+    top: 120%;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: linear-gradient(45deg,var(--main),#7136eb,#4511ad);
+    transition: all .3s ease ;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.addNewTopic #tname,.addNewTopic #twrite,.addNewTopic .filesArea{
+    width: calc(100% - 0px);
+    max-width: 700px;
+}
+.addNewTopic .filesArea{
+    display: flex;
+}
+.addNewTopic #timage label{
+    cursor: pointer;
+    padding: 10px 15px;
+    background: var(--mainNav);
+    color: var(--main);
+    font-size: clamp(15px,2.9vw,18px);
+    margin: 15px 0px 15px 15px;
+}
+.addNewTopic #timage #sendImage{
+    position: absolute;
+    z-index: -1;
+    opacity: 0;
+}
+.addNewTopic h3{
+    padding: 5px 15px 0px 15px;
+    margin: 15px 0 5px 0;
+    font-size: clamp(15px,2.9vw,18px);
+    color: var(--mainNav);
+    font-weight: 300;
+}
+.addNewTopic input{
+    padding: 5px;
+    margin:  5px 15px 20px 15px;
+    width: calc(100% - 40px);
+    max-width: 700px;
+    font-size: clamp(16px,3vw,19px);
+    outline: none;
+    border: none;
+    background: transparent;
+    border-bottom: 1px solid var(--light);
+    color: #eee;
+}
+.addNewTopic textarea{
+    padding: 5px;
+    margin:  5px 15px 5px 15px;
+    width: calc(100% - 40px);
+    max-width: 700px;
+    font-size: clamp(16px,3vw,19px);
+    outline: none;
+    border: none;
+    background: transparent;
+    height: 35vh;
+    border-bottom: 1px solid var(--light);
+    color: #eee;
+    resize: none;
+    overflow-y: scroll;
+}
+.addNewTopic #tfile label{
+    cursor: pointer;
+    padding: 10px 15px;
+    background: var(--mainNav);
+    color: var(--main);
+    font-size: clamp(15px,2.9vw,18px);
+    margin: 15px;
+}
+.addNewTopic #tfile #sendFile{
+    position: absolute;
+    z-index: -1;
+    opacity: 0;
+}
+.btn{
+    position: fixed;
+    bottom: -300px;
+    margin: 5px 15px;
+    width: calc(100% - 40px);
+    max-width: 700px;
+    display: flex;
+    transition: all .3s ease;
+}
+.btn #create,.btn #cancel{
+    outline: none;
+    border: none;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: clamp(18px,3.1vw,20px);
+    margin: 5px;
+    background: var(--mainNav);
+    border-radius: 20px;
+    color: var(--main);
+}
+
+.page{
+    display: none;
+}
+
+.devlogo{
+    text-decoration: none;
+}
+
+.devlogo h1{
+    font-size: 25px;
+}
+
+
+
+@media only screen and (max-width:850px) {
+    .container{
+        grid-template-columns: 1fr;
+        grid-template-areas: "content";
+    }
+    .container .helper{
+        position: fixed;
+        top: 50px;
+        left: 100%;
+        height: calc(100% - 50px);
+        width: 100%;
+        transition: all .3s ease;
+    }
+
+    header .combine{
+        display: none;
+    }
+    header .searchHide{
+        display: block;
+    }
+    header .menu{
+        display: block;
+    }
+}
+

@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" href="./universal/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Coding Club</title>
+</head>
+<script defer src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+<script defer src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+<script defer src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+
+<script src="./universal/js/utils.js" defer></script>
+<script src="./universal/js/Shape.js" defer></script>
+<script src="./universal/js/BouncingString.js" defer></script>
+<script src="./universal/js/main.js" defer></script>
+<script src="./universal/js/script.js" defer></script>
+<script src="./universal/js/firebase_home.js" defer></script>
+<body>
+
+<div class="loader"></div>
+    
+<div class="custom-navigation">
+    <canvas id="canvas"></canvas>
+    <header>
+        <div class="logo"></div>
+        <svg class="hamburger" viewBox="0 0 50 50"><path d=""/></svg>
+        <div class="menu">
+            <li><a href="index.html"><svg viewBox="0 0 50 50"><path class="light" d="M10,25 L10,45 L20,45 L20,35 L30,35 L30,45 L40,45 L40,25 L25,5 L10,25"/><path class="dark" d="M5,25 L25,5 L45,25"/></svg>Home</a></li>
+            <!-- <li><a href="profile.html"><svg viewBox="0 0 50 50"><path class="light" d="M5,45 C-5,22 55,22 45,45"/><circle cx=25 cy=14 r=10 class="c dark"></circle></svg>Profile</a></li> -->
+            <li><a href="notification.html"><svg viewBox="0 0 50 50"><path class="s light" d="M25,5 L25,10"/><path class="light" d="M5,35 Q12,30 10,20 Q10,10 25,7 Q40,10 40,20 Q38,30 45,35 L45,37 L5,37"/> <path class="c dark" d="M18,38 Q18,43 25,45 Q32,43 32,38"/></svg>Notifications
+                <div class="notice-number"></div>
+            </a></li>
+            <li><a href="contact.html"><svg viewBox="0 0 50 50"><path class="light" d="M2,7 L48,7 L48,43 L2,43 Z"/><path class="c dark" d="M2,7 L48,7 L48,15 L25,30 L2,15 Z"/></svg>Contact</a></li>
+            <!-- <li class='login'><a href="login.html">Login</a></li> -->
+        </div>
+    </header>
+
+
+    <div class="container container1">
+        <div class="title">
+            <span class="first">Coding</span>
+            <span class="second">Club.
+                <div class="dot"></div>
+            </span>
+        </div>
+
+        <p class='sub-heading'>Bring Ideas to Life.</p>
+
+        <p class="bounded">
+            Learn emerging Technologies, acquire New Expertise & improve Coding Skills by being a part of the Club.
+        </p>
+
+        <div class="actions">
+            <a class='login main-page-login' href="register.html">Get Started</a>
+
+            <!-- <button class='join-group main-page-join-group'>Join Whatsapp Group</button> -->
+        </div>
+
+    </div>
+
+
+    <div class="container container2">
+        <p class='sub-heading'>Topic under our scope!</p>
+
+        <div class="item-container">
+            <div class="item item1">
+                <div class="title">Open Source</div>
+                <svg viewBox="0 0 100 100">
+                    <path d="M38,90 A40,40 0 1 1 62,90 L54,70 A18,18 0 1 0 46,70 Z" />
+                </svg>
+                <div class="write-up">
+                    <svg viewBox="0 0 50 50">
+                        <path d="M25,10 L25,15 M25,25 L25,40"/>
+                    </svg>
+                    Open Source.
+                </div>
+            </div>
+
+            <div class="item item2">
+                <div class="title">Machine Learning</div>
+                <svg viewBox="0 0 100 100">
+                    <path d="M10,28 L50,20 M10,28 L50,35 M10,28 L50,50 M10,28 L50,65 M10,28 L50,80 
+                    M10,43 L50,20 M10,43 L50,35 M10,43 L50,50 M10,43 L50,65 M10,43 L50,80
+                    M10,58 L50,20 M10,58 L50,35 M10,58 L50,50 M10,58 L50,65 M10,58 L50,80
+                    M10,73 L50,20 M10,73 L50,35 M10,73 L50,50 M10,73 L50,65 M10,73 L50,80
+                    M50,20 L90,35 M50,20 L90,50 M50,20 L90,65
+                    M50,35 L90,35 M50,35 L90,50 M50,35 L90,65
+                    M50,50 L90,35 M50,50 L90,50 M50,50 L90,65
+                    M50,65 L90,35 M50,65 L90,50 M50,65 L90,65
+                    M50,80 L90,35 M50,80 L90,50 M50,80 L90,65"/>
+                    <circle cx="10" cy="28" r="5"></circle>
+                    <circle cx="10" cy="43" r="5"></circle>
+                    <circle cx="10" cy="58" r="5"></circle>
+                    <circle cx="10" cy="73" r="5"></circle>
+
+                    <circle cx="50" cy="20" r="5"></circle>
+                    <circle cx="50" cy="35" r="5"></circle>
+                    <circle cx="50" cy="50" r="5"></circle>
+                    <circle cx="50" cy="65" r="5"></circle>
+                    <circle cx="50" cy="80" r="5"></circle>
+
+                    <circle cx="90" cy="35" r="5"></circle>
+                    <circle cx="90" cy="50" r="5"></circle>
+                    <circle cx="90" cy="65" r="5"></circle>
+                </svg>
+                <div class="write-up">
+                    <svg viewBox="0 0 50 50">
+                        <path d="M25,10 L25,15 M25,25 L25,40"/>
+                    </svg>
+                    Machine Learning through Neural Network.
+                </div>
+            </div>
+
+            <div class="item item3">
+                <div class="title">Blockchain & Solidity</div>
+                <svg viewBox="0 0 100 100">
+                    <path d="M10,18 L10,33 L22,41 L22,26 Z L22,10 L34,18 L22,26 M34,18 L34,33 L22,41
+                    M66,18 L66,33 L78,41 L78,26 Z L78,10 L90,18 L78,26 M90,18 L90,33 L78,41
+                    M66,67 L66,82 L78,90 L78,75 Z L78,59 L90,67 L78,75 M90,67 L90,82 L78,90
+                    M10,67 L10,82 L22,90 L22,75 Z L22,59 L34,67 L22,75 M34,67 L34,82 L22,90
+                    M28,30 L70,64 M72,30 L30,64"
+                    />
+                </svg>
+                <div class="write-up">
+                    <svg viewBox="0 0 50 50">
+                        <path d="M25,10 L25,15 M25,25 L25,40"/>
+                    </svg>
+                    Blockchain and solidity.
+                </div>
+            </div>
+
+            <div class="item item4">
+                <div class="title">Data structure & Algorithms</div>
+                <svg viewBox="0 0 100 100">
+                    <path d="M50,10 L30,35 M50,10 L70,35
+                             M30,35 L10,60 M30,35 L45,60
+                             M45,60 L30,85 M45,60 L60,85
+                             M70,35 L90,60 M90,60 L74,85"/>
+                    <circle cx="50" cy="10" r="5"></circle>
+                    <circle cx="30" cy="35" r="5"></circle>
+                    <circle cx="70" cy="35" r="5"></circle>
+                    <circle cx="10" cy="60" r="5"></circle>
+                    <circle cx="45" cy="60" r="5"></circle>
+                    <circle cx="30" cy="85" r="5"></circle>
+                    <circle cx="60" cy="85" r="5"></circle>
+                    <circle cx="90" cy="60" r="5"></circle>
+                    <circle cx="74" cy="85" r="5"></circle>
+                </svg>
+                <div class="write-up">
+                    <svg viewBox="0 0 50 50">
+                        <path d="M25,10 L25,15 M25,25 L25,40"/>
+                    </svg>
+                    Data Structure and Algorithms are essential for competetive exams as well as for Job interviews, yet student tend to neglect these. To improve critical thinking, various important algorithms would be explained in the webinars/sessions.
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+    <div class="footer">
+        <div class="social-media">
+            <li><a href=""><i class="fa-brands fa-instagram"></i></a></li>
+            <li><a href=""><i class="fa-brands fa-github"></i></a></li>
+            <li><a href=""><i class="fa-brands fa-discord"></i></a></li>
+            <li><a href=""><i class="fa-brands fa-youtube"></i></a></li>
+        </div>
+        <div class="related-pages">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="">About</a></li>
+            <li><a href="register.html">Register</a></li>
+            <!-- <li><a href="login.html">Login</a></li> -->
+            <li><a href="">Contact</a></li>
+        </div>
+        <div class="copy-right">
+            @ Copyright 2022 Coding club. All Rights Reserved
+        </div>
+    </div>
+ 
+    <!-- <div class="container container3">
+        <div class="sub-heading">
+            An Interactive Learing and Growing Community
+            Le lorem ipsum dolor sit amet consectetur adipisi
+        </div>
+
+        <p class="bounded float-left">
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quo aut porro ipsum repudiandae ipsam odio distinctio quibusdam ut voluptatem amet, voluptas explicabo numquam? Consectetur pariatur impedit atque in, magnam quaerat inventore dolorem similique itaque dolorum porro accusantium doloribus officiis. Facilis consequatur quis numquam, odio architecto illum illo odit voluptatum ea.
+        </p>
+    </div> -->
+
+    
+
+</div>  
+</body>
+</html>

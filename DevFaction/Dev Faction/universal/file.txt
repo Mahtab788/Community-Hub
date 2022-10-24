@@ -1,0 +1,129 @@
+let canvas = document.querySelector('#canvas')
+let ctx = canvas.getContext('2d')
+canvas.height = innerHeight
+canvas.width = innerWidth
+let grab = false
+
+let A = {x:200, y:100, ox:200, oy:100, vx:0, vy: 0}
+let B = {x:700, y:400, ox:700, oy:400, vx:0, vy: 0}
+let middleX = lerp(A.x,B.x,0.5)
+let middleY = lerp(A.y,B.y,0.5)
+let Mid = {x:middleX, y:middleY, ox:middleX, oy:middleY, vx:0, vy: 0}
+let Mouse = {...Mid}
+let BOUNCE = 0.6
+let minDetect = 5
+let maxDetect = 30
+let detect = minDetect
+
+
+function animate() {
+    canvas.height = innerHeight
+    canvas.width = innerWidth
+    ctx.fillStyle = '#ff8e2d'
+    ctx.strokeStyle = '#ff8e2d'
+    ctx.lineWidth = 5
+
+
+    ctx.beginPath()
+    if (lineCircle(A.x, A.y, B.x, B.y, Mouse.x, Mouse.y, detect)) {
+        detect = maxDetect
+        let tx = (Mid.ox + Mouse.x) / 2
+        let ty = Mouse.y
+        Mid.vx = tx - Mid.x
+        Mid.vy = ty - Mid.y
+    }
+    else {
+        detect = minDetect
+        let tx = Mid.ox
+        let ty = Mid.oy
+        Mid.vx += tx - Mid.x
+        Mid.vx *= BOUNCE
+        Mid.vy += ty - Mid.y
+        Mid.vy *= BOUNCE
+    }
+
+    Mid.x += Mid.vx
+    Mid.y += Mid.vy
+
+    ctx.moveTo(A.x, A.y)
+    let cx1 = (A.x + Mid.x) /2
+    let cy1 = (A.y + Mid.y) /2
+    ctx.quadraticCurveTo(A.x, A.y, cx1, cy1)
+
+    let cx2 = (Mid.x + B.x) /2
+    let cy2 = (Mid.y + B.y) /2
+    ctx.quadraticCurveTo(Mid.x, Mid.y, cx2, cy2)
+
+    ctx.lineTo(B.x, B.y)
+    ctx.stroke()
+    ctx.closePath()
+
+    // drawPoint(ctx, Mouse, 7)
+
+
+    requestAnimationFrame(animate)
+}
+animate()
+
+function drawPoint(ctx, P, radius) {
+    ctx.beginPath()
+    ctx.arc(P.x, P.y, radius, 0, 2*Math.PI)
+    ctx.fill()
+    ctx.closePath()
+}
+
+
+// window.addEventListener('mousedown', (e) => {
+//     grab = true
+// })
+// window.addEventListener('mouseup', (e) => {
+//     grab = false
+// })
+window.addEventListener('mousemove', (e) => {
+    // if (!grab) return
+    Mouse.x = e.x
+    Mouse.y = e.y
+})
+
+
+
+function lerp(A, B, t) {
+    return A+(B-A)*t
+}
+
+function distance(x1,y1,x2,y2) {
+    return Math.sqrt(Math.pow(x2-x1,2) + Math.pow(y2-y1,2))
+}
+function lineCircle(x1, y1, x2, y2, cx, cy, r) {
+    let lineLength = distance(x1, y1, x2, y2)
+    let point = (((cx - x1)*(x2 - x1)) + ((cy - y1)*(y2 - y1))) / Math.pow(lineLength, 2)
+
+    let px = x1 + (point*(x2 - x1))
+    let py = y1 + (point*(y2 - y1))
+
+    if (distance(px, py, cx, cy) < r) return true
+    else return false
+}
+
+
+
+
+
+
+
+
+
+
+
+////////////////////////////////////////////////////
+
+new Shape(170, 220, 20, 3, Math.PI/4, RED),
+new Shape(300, 370, 150, 3, -Math.PI/24, LIGHT_ORANGE),
+new Shape(800, 75, 50, 3, -Math.PI/3, GREEN),
+new Shape(850, 75, 25, 3, 0, BLUE),
+new Shape(750, 500, 100, 4, Math.PI/12, BLUE),
+new Shape(805, 585, 25, 3, 0, ORANGE),
+new Shape(120, 520, 15, 3, Math.PI/8, GREEN),
+new Shape(1080, 300, 60, 4, Math.PI/2, YELLOW),
+new Shape(30, 50, 80, 20, 0, LIGHT_BLUE),
+new Shape(420, 210, 60, 2, 0, GREEN),

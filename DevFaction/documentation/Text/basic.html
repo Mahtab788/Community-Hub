@@ -1,0 +1,147 @@
+<h1>Basic of Scene, Camera, Renderer</h1>
+<p>We will see how THREE.js is used</p>
+<br>
+<p>Follow the steps:</p>
+<li>After installing Node js, install three library using</li>
+<p>npm install three --save</p>
+<br>
+<li>Then install dat.gui using</li>
+<p>npm install dat.gui --save</p>
+<br>
+<p>After Installing these libraries into your node_modules, go to your Script.js file and import them accordingly</p>
+<pre>
+import './style.css';
+import * as THREE from 'three.js';
+import dat from 'dat.gui';
+import { OrbitControls } from 'tree/examples/jsm/controls/OrbitControls.js';
+</pre>
+
+<p>We imported Stylesheets, therefore we won't include in our html file.</p>
+<p>In style.css, canvas element is given overflox-x: hidden;</p>
+<p>We also imported OrbitControls from THREE.js which is inbuild</p>
+<p>Import Dat.Gui as shown, so we can toggle values later</p>
+<br>
+<p>After that, We will define Scene, Camera, Renderer and other stuffs</p>
+<pre>
+import './style.css';
+import * as THREE from 'three';
+import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
+import dat from 'dat.gui';
+.
+.
+var scene = new THREE.Scene();
+
+var camera = new THREE.PerspectiveCamera(75,window.innerWidth/window.innerHeight,0.1,100);
+camera.position.set(0,0,3);
+    
+var renderer = new THREE.WebGLRenderer();
+renderer.setClearColor(0x222222);
+renderer.setSize(window.innerWidth,window.innerHeight);
+renderer.setPixelRatio(Math.min(3,window.devicePixelRatio));
+document.body.appendChild(renderer.domElement);
+</pre>
+<p>we created Scene using:-</p>
+<pre>var scene = new THREE.Scene();</pre>
+<p>Every thing being displayed should be inside scene, or else it won't be visible</p>
+<br>
+<p>There are many Cameras in THREE.js, but to mimic Human Eyes, we use PerspectiveCamera</p>
+<pre>var camera = new THREE.PerspectiveCamera(75,window.innerWidth/window.innerHeight,0.1,100)</pre>
+<p>PerspectiveCamera requires 4 parameters, which are ( FOV , aspect-ration , near-view , far-view )</p>
+
+<p>1. FOV is Field of View, simply means the angle through which you will look in the Scene</p>
+<p>2. aspect-ratio cover up the entire screen as we used ' window.innerWidth / window.innerHeight '</p>
+<p>3. Here near-view is 0.1, which implies object before 0.1 will not be visible</p>
+<p>4. And object after far-view will be hidden</p>
+
+<p>Now we need to move Camera Backwards by using:-</p>
+<pre>camera.position.set(0,0,3);</pre>
+<p>You can also set a single axis independently</p>
+<pre>
+camera.position.x = 0;
+camera.position.y = 0;
+camera.position.z = 3;
+</pre>
+<br>
+<p>Then we create a Renderer by writing:-</p>
+<pre>var renderer = new THREE.WebGLRenderer();</pre>
+<p>We set Renderer color by 'renderer.setClearColor( 0x000000 )'</p>
+<p>We give the Height and Width to renderer by 'renderer.setSize( window.innerWidth ,window.innerHeight);'</p>
+<pre>
+renderer.setClearColor(0x222222);
+renderer.setSize(window.innerWidth,window.innerHeight);
+</pre>
+<p>Then set the PixelRation for better view of scene on different devices</p>
+<pre>
+renderer.setPixelRatio(Math.min(3,window.devicePixelRatio));
+</pre>
+<p>After this append renderer in your html document by:-</p>
+<pre>document.body.appendChild(renderer.domElement); //here renderer.domElement is canvas element</pre>
+<br>
+<br>
+<p>This was just the setUp of THREE.js, which you will have to repeat for every THREE.js project</p>
+<br>
+<p>After this, define dat.gui by:-</p>
+<pre>var gui = new dat.GUI();</pre>
+<br>
+<p>set an object with value color:0x66ff66</p>
+<pre>var object = {color:0x66ff66}</pre>
+<p>Now we create a Cube:-</p>
+<pre>
+var geometry = new THREE.BoxBufferGeometry(1,1,1);
+var material = new THREE.MeshBasicMaterial({color: object.color});
+var cube = new THREE.Mesh(geometry,material);
+</pre>
+<p>We create a 'geometry' by new THREE .BoxBufferGeometryy( 1,1,1 )</p>
+<p>which creates a cube of length, height and width equal to 1 unit.</p>
+<p>Material is MeshBasicMaterial which applies a plain color to the whole geometry</p>
+<p>There are Two ways to set color of material</p>
+<pre>var material = new THREE.MeshBasicMaterial( {color: object.color} );</pre>
+<p>Set it while declaring, as an object</p>
+<br>
+<pre>
+var material = new THREE.MeshBasicMaterial();
+material.color = new THREE.Color(object.color);
+</pre>
+<p>Or after declaring material</p>
+<br>
+<p>Now create a mesh by:- Mesh(geometry, material) ...we pass geometry and material as parameters, it creates a Cube
+by combining them</p>
+<p>Lastly we need to add the mesh to scene by scene.add(mesh_name)</p>
+<br>
+<p>We used the color from object we created earlier, we could have put the value '0x66ff66' in the material itself
+but it wouldn't give us the flexibility to toggle, as dat.gui only toggles elements of an object.
+</p>
+<br>
+<p>At last we will create a RECURSIVE FUNCTION, which will call itself again and again</p>
+<pre>
+function animate(){
+    requestAnimationFrame(animate)
+
+    renderer.render(scene,camera);
+}
+animate();
+</pre>
+<p>Renderer.render( scene, camera), helps to render the scene at each frame</p>
+<p>so basically you can rotate or position the mesh at each frame inside Recursive Function</p>
+<pre>
+.
+requestAnimationFrame(animate)
+
+cube.rotation.x += 0.009;
+cube.rotation.y += 0.01;
+
+renderer.render(scene,camera);
+.
+</pre>
+<p>This will rotate the cube at each frame</p>
+<br>
+<p>The last part is to change color of cube by dat.gui</p>
+<pre>
+gui.addColor(object,'color').onChange(() => {
+    cube.material.color.set(object.color);
+})
+</pre>
+<br>
+<p>That's it, you'll have your plane colored cube rotating</p>
+<br>
+<br>

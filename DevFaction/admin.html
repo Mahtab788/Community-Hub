@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" href="./universal/css/style.css">
+    <link rel="stylesheet" href="./universal/css/util.css">
+    <link rel="stylesheet" href="./admin.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Coding Club | Admin </title>
+</head>
+<script defer src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+<script defer src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+<script defer src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+
+<script src="./universal/js/utils.js" defer></script>
+<script src="./universal/js/Shape.js" defer></script>
+<script src="./universal/js/BouncingString.js" defer></script>
+<script src="./admin.js" defer></script>
+<script src="./universal/js/script.js" defer></script>
+<body>
+
+<div class="loader"></div>
+    
+<div class="custom-navigation">
+    <canvas id="canvas"></canvas>
+    <header>
+        <div class="logo"></div>
+        <svg class="hamburger" viewBox="0 0 50 50"><path d=""/></svg>
+        <div class="menu">
+            <li><a><svg viewBox="0 0 50 50"><path class="light" d="M5,45 C-5,22 55,22 45,45"/><circle cx=25 cy=14 r=10 class="c dark"></circle></svg>Active Users</a></li>
+            <li><a><svg viewBox="0 0 50 50">
+                <path class="light" d="M0,30 C-10,13 35,13 25,30"/>
+                <circle cx=12.5 cy=10 r=5 class="c dark" />
+                <path class="light" d="M25,30 C20,13 60,13 50,30"/>
+                <circle cx=37.5 cy=10 r=5 class="c dark" />
+                <path class="light" d="M10,50 C0,27 50,27 40,50"/>
+                <circle cx=25 cy=22 r=7 class="c dark" />
+            </svg>All Users</a></li>
+            <li><a><svg viewBox="0 0 50 50"><path class="s light" d="M25,5 L25,10"/><path class="light" d="M5,35 Q12,30 10,20 Q10,10 25,7 Q40,10 40,20 Q38,30 45,35 L45,37 L5,37"/> <path class="c dark" d="M18,38 Q18,43 25,45 Q32,43 32,38"/></svg>Send Notification</a></li>
+        </div>
+    </header>
+
+    <div class="container container1">
+        <div class="title">
+            <span class="first">Coding</span>
+            <span class="second">Club.
+                <div class="dot"></div>
+            </span>
+        </div>
+    </div>
+
+
+    <div class="container container2">
+        <form class="login-container">
+            <div class="sub-heading">Admin Login</div>
+            <div class="inputs">
+                <div class="email">
+                    Email:
+                    <input type="email" name="Email">
+                </div>
+                <div class="password">
+                    Password:
+                    <input class="pass-show-hide" type="password" name="Password" autocomplete>
+                    <svg class="svg-show-hide" viewBox='0 0 50 50'>
+                        <path d="M5,25 C14,3 36,3 45,25 M5,25 C14,47 36,47 45,25"/>
+                        <path class="diagonal" d="M45,5 L5,45" />
+                        <circle cx="25" cy="25" r="8" />
+                    </svg>
+                </div>
+                <button id="login-submit" type="submit">Submit</button>
+            </div>
+        </form>
+
+
+        <form class="send-notification-container">
+            <div class="sub-heading">Send Notification</div>
+            <div class="inputs">
+                <div class="title">
+                    Title:
+                    <input type="text" name="Title">
+                </div>
+                <div class="message">
+                    Message:
+                    <textarea name="Message" id="" cols="30" rows="7"></textarea>
+                </div>
+                <button type="submit" id="send-notification-submit">Send</button>
+            </div>
+        </form>
+    </div>
+
+
+    <div class="footer">
+        <div class="social-media">
+            <li><a href=""><i class="fa-brands fa-instagram"></i></a></li>
+            <li><a href=""><i class="fa-brands fa-github"></i></a></li>
+            <li><a href=""><i class="fa-brands fa-discord"></i></a></li>
+            <li><a href=""><i class="fa-brands fa-youtube"></i></a></li>
+        </div>
+        <div class="related-pages">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="">About</a></li>
+            <li><a href="register.html">Register</a></li>
+            <li><a href="login.html">Login</a></li>
+            <li><a href="">Contact</a></li>
+        </div>
+        <div class="copy-right">
+            @ Copyright 2022 Coding club. All Rights Reserved
+        </div>
+    </div>
+ 
+    <!-- <div class="container container3">
+        <div class="sub-heading">
+            An Interactive Learing and Growing Community
+            Le lorem ipsum dolor sit amet consectetur adipisi
+        </div>
+
+        <p class="bounded float-left">
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quo aut porro ipsum repudiandae ipsam odio distinctio quibusdam ut voluptatem amet, voluptas explicabo numquam? Consectetur pariatur impedit atque in, magnam quaerat inventore dolorem similique itaque dolorum porro accusantium doloribus officiis. Facilis consequatur quis numquam, odio architecto illum illo odit voluptatum ea.
+        </p>
+    </div> -->
+
+    
+
+</div>  
+</body>
+</html>

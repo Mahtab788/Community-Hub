@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <link rel="icon" type="image" href="./images/icons/favicon.gif">
+    <link rel="stylesheet" href="./universal/css/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <title>DevFaction</title>
+</head>
+<script defer src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+<script defer src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+<script defer src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+
+<script src="./universal/js/utils.js" defer></script>
+<script src="./universal/js/Shape.js" defer></script>
+<script src="./universal/js/BouncingString.js" defer></script>
+<script src="./universal/js/main.js" defer></script>
+<script src="./universal/js/script.js" defer></script>
+<script src="./universal/js/firebase_home.js" defer></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+<body>
+
+<div class="loader"></div>
+    
+<div class="custom-navigation">
+    <canvas id="canvas"></canvas>
+    <header>
+        <div class="logo">
+            <a href="index.html"><img src="./images/icons/favicon.gif" alt="" width="75px"></a>
+        </div>
+        <svg class="hamburger" viewBox="0 0 50 50"><path d=""/></svg>
+        <div class="menu">
+            <li><a href="index.html"><svg viewBox="0 0 50 50"><path class="light" d="M10,25 L10,45 L20,45 L20,35 L30,35 L30,45 L40,45 L40,25 L25,5 L10,25"/><path class="dark" d="M5,25 L25,5 L45,25"/></svg>Home</a></li>
+            <!-- <li><a href="profile.html"><svg viewBox="0 0 50 50"><path class="light" d="M5,45 C-5,22 55,22 45,45"/><circle cx=25 cy=14 r=10 class="c dark"></circle></svg>Profile</a></li> -->
+            <li><div class="notice-number"></div></li>
+            <li><a href="contact.html"><svg viewBox="0 0 50 50"><path class="light" d="M2,7 L48,7 L48,43 L2,43 Z"/><path class="c dark" d="M2,7 L48,7 L48,15 L25,30 L2,15 Z"/></svg>Contact</a></li>
+            <!-- <li class='login'><a href="login.html">Login</a></li> -->
+            <li></li>
+        </div>
+    </header>
+
+
+    <div class="container container1">
+        <div class="title">
+            <span class="first"></span>
+            <span class="second">DevFaction.
+                <div class="dot"></div>
+            </span>
+        </div>
+
+        <p class='sub-heading'>Welcome to DevFaction.</p>
+
+        <p class="bounded">
+            The complete developer platform to build, scale, and deliver Blogs.
+        </p>
+
+        <div class="actions">
+            <a class='login main-page-login' href="register.html">Get Started</a>
+
+            <!-- <button class='join-group main-page-join-group'>Join Whatsapp Group</button> -->
+        </div>
+
+    </div>
+
+
+    <div class="container container2">
+        <p class='sub-heading'>Things this project gives</p>
+
+        <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="false">
+            <div class="carousel-indicators">
+              <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+              <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+              <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+            </div>
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <img src="./images/Projects.jpg" class="d-block w-100" alt="...">
+                <div class="carousel-caption d-none d-md-block">
+                  <h1 class="heading">Projects🖥️</h1>
+                  <h3>Show your projects to the community.</h3>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <img src="./images/Blogging.jpg" class="d-block w-100" alt="...">
+                <div class="carousel-caption d-none d-md-block">
+                  <h1 class="heading">Blogs!📄</h1>
+                  <h3>Post your blog for the community.</h3>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <img src="./images/Chatting.jpg" class="d-block w-100" alt="...">
+                <div class="carousel-caption d-none d-md-block">
+                  <h1 class="heading">Chats</h1>
+                  <h3>Chat with people in community.🗣️</h3>
+                </div>
+              </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Next</span>
+            </button>
+          </div>
+    </div>
+
+
+    <div class="footer">
+        <div class="social-media">
+            <li><a href=""><i class="bi bi-instagram"></i></i></a></li>
+            <li><a href=""><i class="bi bi-discord"></i></i></a></li>
+            <li><a href=""><i class="bi bi-youtube"></i></i></a></li>
+            <li><a href=""><i class="bi bi-github"></i></i></a></li>
+        </div>
+        <div class="related-pages">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="">About</a></li>
+            <li><a href="register.html">Register</a></li>
+            <li><a href="login.html">Login</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </div>
+        <div class="copy-right">
+            @ Copyright 2022 DevFaction. All Rights Reserved
+        </div>
+    </div>
+  
+</div> 
+
+
+<!-- JavaScript Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+</body>
+</html>

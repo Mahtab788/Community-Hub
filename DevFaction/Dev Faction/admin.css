@@ -1,0 +1,102 @@
+:root {
+    --login-width: clamp(25vw, 95vw ,400px);
+}
+.container1 {
+    display: none;
+}
+
+
+.container.container2{
+    margin-block: 0 6vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.login-container,
+.send-notification-container{
+    border-radius: 10px;
+    background-color: #fff;
+    box-shadow: 0px 0px 5px #0003;
+    /* border: 1px solid #0003; */
+    width: var(--login-width);
+    padding: 1rem;
+}
+.login-container .sub-heading,
+.send-notification-container .sub-heading{
+    padding: 1rem;
+    width: 100%;
+    margin: 0;
+}
+.login-container .inputs,
+.send-notification-container .inputs{
+    margin-block-start: 3rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+.login-container .inputs .email,
+.login-container .inputs .password,
+.send-notification-container .inputs .title,
+.send-notification-container .inputs .message{
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    color: var(--dark-gray);
+    position: relative;
+}
+.login-container .inputs .email input,
+.login-container .inputs .password input,
+.send-notification-container .inputs .title input,
+.send-notification-container .inputs .message textarea{
+    padding: 0.9rem 0.5rem;
+    border: none;
+    outline: none;
+    font-size: 1.3rem;
+    color: var(--dark-gray);
+    border-radius: 5px;
+    border: 1px solid #0005;
+}
+.login-container .inputs .password input{
+    padding-right: 3rem;
+}
+
+.send-notification-container .inputs .message textarea {
+    resize: none;
+}
+
+
+.login-container .inputs .password svg{
+    position: absolute;
+    top: 50%;
+    right: 0.7rem;
+    cursor: pointer;
+    height: 1.5rem;
+    aspect-ratio: 1/1;
+}
+.login-container .inputs .password svg path, .login-container .inputs .password svg circle{
+    stroke-width: 2.5;
+    stroke: var(--primary);
+    fill: none;
+    stroke-linecap: round;
+}
+
+
+.login-container .inputs #login-submit,
+.send-notification-container .inputs #send-notification-submit{
+    padding: 1rem;
+    border: none;
+    outline: none;
+    background-color: var(--primary-light);
+    border-radius: 5px;
+    font-size: 1.2rem;
+    color: #fff;
+    cursor: pointer;
+}
+.login-container .inputs p{
+    color: var(--dark-gray);
+}
+.login-container .inputs p a{
+    color: var(--primary-light)
+}
+
+
